@@ -1,10 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.LogError("GameManager DNE");
+
+            return _instance;
+        }
+    }
     [SerializeField]
     Camera cam;
     [SerializeField]
@@ -13,6 +23,8 @@ public class GameManager : MonoBehaviour
     float timeRemaining = 5.0f;
     [SerializeField]
     GameObject newPlatform;
+    [SerializeField]
+    GameObject[] grounds;
 
     private void Start()
     {

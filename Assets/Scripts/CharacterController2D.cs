@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
@@ -18,7 +19,7 @@ public class CharacterController2D : MonoBehaviour
     private float hInput;
     [SerializeField]
     AudioClip jumpAudioClip;
-    AudioSource jumpAudio;
+    AudioSource jumpAudio; 
 
     public float HInput
     {
@@ -81,11 +82,6 @@ public class CharacterController2D : MonoBehaviour
         {
             bulletTime = !bulletTime;
         }
-
-       /* if (bulletTime)
-            timeManager.BulletTime();
-        if(!bulletTime)
-            timeManager.DefaultTime();  */
     }
 
     private void FixedUpdate()
