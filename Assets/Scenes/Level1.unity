@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 53801106}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,6 +763,7 @@ MonoBehaviour:
   - {fileID: 1152937093}
   - {fileID: 1274841969}
   - {fileID: 1034297881}
+  ground: {fileID: 872875884}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,6 +850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211488910}
     m_Modifications:
+    - target: {fileID: -56819026886986733, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
+      propertyPath: hasLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7158081562138151555, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
       propertyPath: m_Name
       value: Ground (1)
@@ -1047,6 +1052,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7158081562138151555, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
   m_PrefabInstance: {fileID: 7158081560804956797}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &872875884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -56819026886986733, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
+  m_PrefabInstance: {fileID: 7158081560804956797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872875883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5acbdff646823a04c81539b5e0c22104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898446940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7158081562138151555, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
@@ -1271,7 +1287,7 @@ GameObject:
   - component: {fileID: 1116635802}
   m_Layer: 0
   m_Name: CM vcam1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6783,7 +6799,7 @@ GameObject:
   - component: {fileID: 1836683552}
   m_Layer: 0
   m_Name: Point Light 2D
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6909,8 +6925,8 @@ MonoBehaviour:
   m_AlphaBlendOnOverlap: 0
   m_ShadowIntensity: 0
   m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 62.26
-  m_PointLightOuterAngle: 62.26
+  m_PointLightInnerAngle: 46.1
+  m_PointLightOuterAngle: 61.25
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 6.09448
   m_PointLightDistance: 3
@@ -6936,7 +6952,7 @@ GameObject:
   - component: {fileID: 2011272188}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6997,7 +7013,7 @@ GameObject:
   - component: {fileID: 2109245293}
   m_Layer: 0
   m_Name: Gunholder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7081,18 +7097,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211488910}
     m_Modifications:
-    - target: {fileID: 7158081562138151554, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
-      propertyPath: m_Color.r
-      value: 0.98060465
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158081562138151554, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158081562138151554, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
-      propertyPath: m_Color.b
-      value: 0.93773586
-      objectReference: {fileID: 0}
     - target: {fileID: 7158081562138151555, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
       propertyPath: m_Name
       value: Ground

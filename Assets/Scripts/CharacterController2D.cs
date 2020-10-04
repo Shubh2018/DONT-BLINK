@@ -19,7 +19,7 @@ public class CharacterController2D : MonoBehaviour
     private float hInput;
     [SerializeField]
     AudioClip jumpAudioClip;
-    AudioSource jumpAudio; 
+    AudioSource jumpAudio;
 
     public float HInput
     {

@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     GameObject newPlatform;
     [SerializeField]
     GameObject[] grounds;
+    Collider2D playerCollider;
+    [SerializeField]
+    Ground ground;
 
     private void Start()
     {
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
         if (timeRemaining <= 0)
         {
             player.transform.position = new Vector3(player.transform.position.x - 5.0f, player.transform.position.y + Random.Range(-2.0f, 2.0f), 0.0f);
+            ground.HasMoved = false;
             timeRemaining = 5.0f;
             Instantiate(newPlatform, player.transform.position + new Vector3(0.0f, -0.5f, 0.0f), Quaternion.identity);
             yield return null;
