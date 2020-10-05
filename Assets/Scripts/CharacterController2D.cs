@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
@@ -57,11 +58,38 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    private bool goBack = false;
+    public bool GoBack
+    {
+        get
+        {
+            return goBack;
+        }
+
+        set
+        {
+            goBack = value;
+        }
+    }
     private void Start()
     {
         _player = GetComponent<Rigidbody2D>();
         jumpAudio = GetComponent<AudioSource>();
         jumpAudio.clip = this.jumpAudioClip;
+    }
+    [SerializeField]
+    List<GameObject> platforms;
+    private bool instantiatePlatform = false;
+    public bool InstantiatePlatform
+    {
+        get
+        {
+            return instantiatePlatform;
+        }
+        set
+        {
+            instantiatePlatform = value;
+        }
     }
 
     void Update()
@@ -91,9 +119,6 @@ public class CharacterController2D : MonoBehaviour
 
         Vector2 moveDirection = new Vector2(hInput, 0.0f);
         Move(moveDirection, speed);
-
-        /*if(hInput == 0)
-            Teleport();   */     
     }
 
     void Move(Vector2 direction, float speed)
@@ -106,5 +131,30 @@ public class CharacterController2D : MonoBehaviour
         Vector2 _force = new Vector2(0.0f, _jumpForce);
         _player.AddForce(_force, ForceMode2D.Impulse);
         jumpAudio.Play();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        for(int i = 0; i < platforms.Count; i++)
+        {
+            if(collider.CompareTag("startpoint"))
+            {
+                instantiatePlatform = true;
+                goBack = true;
+            }
+            else
+            {
+                goBack = true;
+                transform.position = platforms[i - 1].transform.position + new Vector3(0.0f, 0.5f, 0.0f);
+            }
+        }
+
+        if (hInput != 0)
+            goBack = false;
+    }
+
+    public void AddPlatformsToList(GameObject platform)
+    {
+        platforms.Add(platform);
     }
 }

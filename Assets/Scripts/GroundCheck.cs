@@ -20,7 +20,8 @@ public class GroundCheck : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        characterController.Grounded = false;
+        if(collision.transform.CompareTag("floor"))
+            characterController.Grounded = false;
         characterController.CanDoubleJump = true;
     }
 }
