@@ -247,6 +247,8 @@ MonoBehaviour:
   _canDoubleJump: 0
   hInput: 0
   jumpAudioClip: {fileID: 8300000, guid: db7bc67d694b85e4eaa3582948daf466, type: 3}
+  platforms:
+  - {fileID: 635078736}
 --- !u!212 &450506891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -306,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450506889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.33, z: 0}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1522526263}
@@ -578,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.33, z: -10}
+  m_LocalPosition: {x: 0, y: -2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -664,7 +666,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   player: {fileID: 450506890}
   timeRemaining: 5
-  newPlatform: {fileID: 7158081562138151555, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
+  newPlatform: {fileID: 5094192055021115936, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +680,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 450506889}
+--- !u!1 &635078736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5094192055049907101, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
+  m_PrefabInstance: {fileID: 5094192055356333387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &726690101
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,6 +6018,10 @@ PrefabInstance:
     - target: {fileID: 5094192055021115936, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
       propertyPath: m_Name
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094192055049907101, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
+      propertyPath: m_TagString
+      value: startpoint
       objectReference: {fileID: 0}
     - target: {fileID: 5094192056690576459, guid: 157fd7c3abca0034da02f1938c8331f5, type: 3}
       propertyPath: m_LocalPosition.x
