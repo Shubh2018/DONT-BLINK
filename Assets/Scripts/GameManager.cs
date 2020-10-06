@@ -18,6 +18,20 @@ public class GameManager : MonoBehaviour
     float timer = 5.0f;
     [SerializeField]
     bool StartTimer = true;
+    [SerializeField]
+    bool canPlayerStart = false;
+    public bool CanPlayerStart
+    {
+        get
+        {
+            return canPlayerStart;
+        }
+
+        set
+        {
+            canPlayerStart = value;
+        }
+    }
 
     void Start()
     {
@@ -38,7 +52,8 @@ public class GameManager : MonoBehaviour
         {
             Camera.main.backgroundColor = Color.black;
             timer = 2.5f;
-            StartTimer = false;
+            StartTimer = !StartTimer;
+            canPlayerStart = !canPlayerStart;
         }
     }
 }

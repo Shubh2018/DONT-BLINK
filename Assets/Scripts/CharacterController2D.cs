@@ -22,16 +22,7 @@ public class CharacterController2D : MonoBehaviour
     SpriteRenderer sprite;
     [SerializeField]
     SpriteRenderer gun;
-
-    public float HInput
-    {
-        get
-        {
-            return hInput;
-        }
-    }
     float speed;
-    bool bulletTime = false;
 
     public bool CanDoubleJump
     {
@@ -58,6 +49,7 @@ public class CharacterController2D : MonoBehaviour
             _grounded = value;
         }
     }
+
     private void Start()
     {
         _player = GetComponent<Rigidbody2D>();
@@ -68,34 +60,34 @@ public class CharacterController2D : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetButtonDown("Jump") && _grounded)
+        if(GameManager.Instance.CanPlayerStart)
         {
-            Jump();
-        }
+            if (Input.GetButtonDown("Jump") && _grounded)
+            {
+                Jump();
+            }
 
-        if (Input.GetButtonDown("Jump") && _canDoubleJump && !_grounded)
-        {
-            Jump();
-            _canDoubleJump = false;
-        }
-
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            bulletTime = !bulletTime;
-        }
+            if (Input.GetButtonDown("Jump") && _canDoubleJump && !_grounded)
+            {
+                Jump();
+                _canDoubleJump = false;
+            }
+        }    
     }
 
     private void FixedUpdate()
     {
         speed = Grounded ? _moveSpeed : _airSpeed;
         hInput = Input.GetAxis("Horizontal");
-
         Vector2 moveDirection = new Vector2(hInput, 0.0f);
-        transform.Translate(moveDirection * speed * Time.deltaTime);
 
-        if (hInput > 0 && !lookingRight || hInput < 0 && lookingRight)
-            Flip();
+        if (GameManager.Instance.CanPlayerStart)
+        {
+            transform.Translate(moveDirection * speed * Time.deltaTime);
+
+            if (hInput > 0 && !lookingRight || hInput < 0 && lookingRight)
+                Flip();
+        }
     }
 
     void Flip()
@@ -104,7 +96,6 @@ public class CharacterController2D : MonoBehaviour
         sprite.flipX = !sprite.flipX;
         gun.GetComponent<SpriteRenderer>().flipY = !gun.GetComponent<SpriteRenderer>().flipY;
     }
-
 
     void Jump()
     {
