@@ -19,8 +19,9 @@ public class CharacterController2D : MonoBehaviour
     AudioClip jumpAudioClip;
     AudioSource jumpAudio;
     bool lookingRight = true;
-    public bool flip = false;
     SpriteRenderer sprite;
+    [SerializeField]
+    SpriteRenderer gun;
 
     public float HInput
     {
@@ -101,6 +102,7 @@ public class CharacterController2D : MonoBehaviour
     {
         lookingRight = !lookingRight;
         sprite.flipX = !sprite.flipX;
+        gun.GetComponent<SpriteRenderer>().flipY = !gun.GetComponent<SpriteRenderer>().flipY;
     }
 
 

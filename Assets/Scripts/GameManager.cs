@@ -15,27 +15,30 @@ public class GameManager : MonoBehaviour
         }
     }
     [SerializeField]
-    Camera cam;
+    float timer = 5.0f;
     [SerializeField]
-    CharacterController2D player;
+    bool StartTimer = true;
 
-    private void Start()
+    void Start()
     {
-        if(player != null)
-            StartCoroutine(ChangeBGColor());   
+        Camera.main.backgroundColor = new Color(Random.value, Random.value, Random.value);
     }
 
-    IEnumerator ChangeBGColor()
+    void Update()
     {
-        while (true)
+        if(StartTimer)
+            Timer();
+    }
+
+    void Timer()
+    {   
+        timer -= Time.deltaTime;
+
+        if(timer < 0)
         {
-            cam.backgroundColor = new Color(Random.value, Random.value, Random.value);
-
-            yield return new WaitForSeconds(1.0f);
-
-            cam.backgroundColor = Color.black;
-            
-            yield return new WaitForSeconds(Random.Range(6.0f, 11.0f));
+            Camera.main.backgroundColor = Color.black;
+            timer = 2.5f;
+            StartTimer = false;
         }
     }
 }
