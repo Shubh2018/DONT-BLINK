@@ -247,6 +247,7 @@ MonoBehaviour:
   _canDoubleJump: 0
   hInput: 0
   jumpAudioClip: {fileID: 8300000, guid: db7bc67d694b85e4eaa3582948daf466, type: 3}
+  flip: 0
 --- !u!212 &450506891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -306,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450506889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.5, y: 4.74, z: 0}
+  m_LocalPosition: {x: 22.5, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1522526263}
@@ -491,7 +492,6 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420030}
   - component: {fileID: 519420035}
-  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -663,19 +663,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   player: {fileID: 450506890}
---- !u!114 &519420036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 454f5756a71ff5e4ca1dab60dd1bdc1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 450506889}
 --- !u!1 &726690101
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -21,6 +18,9 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     AudioClip jumpAudioClip;
     AudioSource jumpAudio;
+    bool lookingRight = true;
+    public bool flip = false;
+    SpriteRenderer sprite;
 
     public float HInput
     {
@@ -62,6 +62,7 @@ public class CharacterController2D : MonoBehaviour
         _player = GetComponent<Rigidbody2D>();
         jumpAudio = GetComponent<AudioSource>();
         jumpAudio.clip = this.jumpAudioClip;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -90,13 +91,18 @@ public class CharacterController2D : MonoBehaviour
         hInput = Input.GetAxis("Horizontal");
 
         Vector2 moveDirection = new Vector2(hInput, 0.0f);
-        Move(moveDirection, speed);
+        transform.Translate(moveDirection * speed * Time.deltaTime);
+
+        if (hInput > 0 && !lookingRight || hInput < 0 && lookingRight)
+            Flip();
     }
 
-    void Move(Vector2 direction, float speed)
+    void Flip()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        lookingRight = !lookingRight;
+        sprite.flipX = !sprite.flipX;
     }
+
 
     void Jump()
     {

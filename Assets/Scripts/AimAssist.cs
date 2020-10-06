@@ -23,7 +23,7 @@ public class AimAssist : MonoBehaviour
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         _gunHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotZ);
 
-        RaycastHit2D hit = Physics2D.Raycast(_bulletSpwan.transform.position, Camera.main.WorldToScreenPoint(mousePosition));
+        RaycastHit2D hit = Physics2D.Raycast(_bulletSpwan.transform.position, mousePosition);
 
         if(Input.GetMouseButtonDown(0) && Vector3.Distance(direction, _gunHolder.transform.position) > 4)
         {
