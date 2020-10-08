@@ -9,7 +9,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     private bool _grounded = false;
     [SerializeField]
-    private float _jumpForce = 5.0f;
+    private float _jumpForce = 7.5f;
     private Rigidbody2D _player;
     [SerializeField]
     private bool _canDoubleJump;
@@ -23,6 +23,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     SpriteRenderer gun;
     float speed;
+    [SerializeField]
+    Animator switchAnimation;
 
     public bool CanDoubleJump
     {
@@ -99,7 +101,8 @@ public class CharacterController2D : MonoBehaviour
 
     void Jump()
     {
-        Vector2 _force = new Vector2(0.0f, _jumpForce);
+        float force = _grounded ? _jumpForce : 5.0f;
+        Vector2 _force = new Vector2(0.0f, force);
         _player.AddForce(_force, ForceMode2D.Impulse);
         jumpAudio.Play();
     }

@@ -30,7 +30,17 @@ public class GameManager : MonoBehaviour
         set
         {
             canPlayerStart = value;
+            if (!canPlayerStart)
+            {
+                StartTimer = !StartTimer;
+            }
+            Camera.main.backgroundColor = new Color(Random.value, Random.value, Random.value);
         }
+    }
+
+    void Awake()
+    {
+        _instance = this;
     }
 
     void Start()
@@ -47,8 +57,8 @@ public class GameManager : MonoBehaviour
     void Timer()
     {   
         timer -= Time.deltaTime;
-
-        if(timer < 0)
+         
+        if(timer < 0 && !canPlayerStart)
         {
             Camera.main.backgroundColor = Color.black;
             timer = 2.5f;

@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - spawn
   - startpoint
+  - switch
   layers:
   - Default
   - TransparentFX

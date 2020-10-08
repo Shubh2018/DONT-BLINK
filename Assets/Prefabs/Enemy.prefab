@@ -223,7 +223,7 @@ MonoBehaviour:
   _bulletSpeed: 2000
   bulletprefab: {fileID: 181944473311792414, guid: e02ee9a83b7227b409498f78af89e4cc, type: 3}
   bulletSpawn: {fileID: 4119147855330870064}
-  distance: 10
+  distance: 5
   fireRate: 0.5
 --- !u!1 &4119147854291226351
 GameObject:
