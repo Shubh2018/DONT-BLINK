@@ -62,19 +62,16 @@ public class CharacterController2D : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.Instance.CanPlayerStart)
+        if (Input.GetButtonDown("Jump") && _grounded)
         {
-            if (Input.GetButtonDown("Jump") && _grounded)
-            {
-                Jump();
-            }
+            Jump();
+        }
 
-            if (Input.GetButtonDown("Jump") && _canDoubleJump && !_grounded)
-            {
-                Jump();
-                _canDoubleJump = false;
-            }
-        }    
+        if (Input.GetButtonDown("Jump") && _canDoubleJump && !_grounded)
+        {
+            Jump();
+            _canDoubleJump = false;
+        }   
     }
 
     private void FixedUpdate()
@@ -83,13 +80,10 @@ public class CharacterController2D : MonoBehaviour
         hInput = Input.GetAxis("Horizontal");
         Vector2 moveDirection = new Vector2(hInput, 0.0f);
 
-        if (GameManager.Instance.CanPlayerStart)
-        {
-            transform.Translate(moveDirection * speed * Time.deltaTime);
+        transform.Translate(moveDirection * speed * Time.deltaTime);
 
-            if (hInput > 0 && !lookingRight || hInput < 0 && lookingRight)
-                Flip();
-        }
+        if (hInput > 0 && !lookingRight || hInput < 0 && lookingRight)
+            Flip();
     }
 
     void Flip()

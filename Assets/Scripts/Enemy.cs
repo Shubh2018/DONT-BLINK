@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
@@ -21,8 +20,10 @@ public class Enemy : MonoBehaviour
     float _nextTimeToShoot = 0.0f;
     [SerializeField]
     float fireRate = 0.1f;
-    //[SerializeField]
-    //ParticleSystem bloodScatter;
+    [SerializeField]
+    Light2D enemyLight;
+    [SerializeField]
+    Light2D gunLight;
 
     void Awake()
     {
@@ -36,6 +37,18 @@ public class Enemy : MonoBehaviour
         gunholder.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, rotZ));
         if (Vector3.Distance(player.position, transform.position) < distance)
             Shoot(rotZ);
+
+        if(!GameManager.Instance.IsEnemyVisible)
+        {
+            enemyLight.enabled = true;
+            gunLight.enabled = true;
+        }
+
+        else
+        {
+            enemyLight.enabled = false;
+            gunLight.enabled = false;
+        }
     }
 
     void Shoot(float rotZ)

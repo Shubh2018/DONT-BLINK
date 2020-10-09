@@ -25,23 +25,20 @@ public class AimAssist : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(_bulletSpwan.transform.position, mousePosition);
 
-        if(GameManager.Instance.CanPlayerStart)
+        if (Input.GetMouseButtonDown(0) && Vector3.Distance(direction, _gunHolder.transform.position) > 4)
         {
-            if (Input.GetMouseButtonDown(0) && Vector3.Distance(direction, _gunHolder.transform.position) > 4)
+            Debug.DrawRay(_bulletSpwan.transform.position, mousePosition, Color.red);
+            if (hit)
             {
-                Debug.DrawRay(_bulletSpwan.transform.position, mousePosition, Color.red);
-                if (hit)
-                {
-                    Debug.Log(hit.transform.name);
-                }
+                Debug.Log(hit.transform.name);
+            }
 
-                if (_nextTimeToFire < Time.time)
-                {
-                    _nextTimeToFire = Time.time + _fireRate;
+            if (_nextTimeToFire < Time.time)
+            {
+                _nextTimeToFire = Time.time + _fireRate;
 
-                    GameObject bullet = Instantiate(_bulletPrefab, _bulletSpwan.transform.position, Quaternion.Euler(new Vector3(0.0f, 0.0f, rotZ)));
-                    bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * _bulletSpeed * Time.unscaledDeltaTime;
-                }
+                GameObject bullet = Instantiate(_bulletPrefab, _bulletSpwan.transform.position, Quaternion.Euler(new Vector3(0.0f, 0.0f, rotZ)));
+                bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * _bulletSpeed * Time.unscaledDeltaTime;
             }
         }
     }

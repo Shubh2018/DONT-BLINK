@@ -19,22 +19,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     bool StartTimer = true;
     [SerializeField]
-    bool canPlayerStart = false;
-    public bool CanPlayerStart
+    bool isEnemyVisible = false;
+    public bool IsEnemyVisible
     {
         get
         {
-            return canPlayerStart;
+            return isEnemyVisible;
         }
 
         set
         {
-            canPlayerStart = value;
-            if (!canPlayerStart)
-            {
-                StartTimer = !StartTimer;
-            }
-            Camera.main.backgroundColor = new Color(Random.value, Random.value, Random.value);
+            isEnemyVisible = value;
         }
     }
 
@@ -58,12 +53,12 @@ public class GameManager : MonoBehaviour
     {   
         timer -= Time.deltaTime;
          
-        if(timer < 0 && !canPlayerStart)
+        if(timer < 0 && !isEnemyVisible)
         {
             Camera.main.backgroundColor = Color.black;
             timer = 2.5f;
             StartTimer = !StartTimer;
-            canPlayerStart = !canPlayerStart;
+            isEnemyVisible = !isEnemyVisible;
         }
     }
 }
