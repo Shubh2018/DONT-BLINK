@@ -23,9 +23,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     SpriteRenderer gun;
     float speed;
-    [SerializeField]
-    Animator switchAnimation;
-
+  
     public bool CanDoubleJump
     {
         get
@@ -71,7 +69,7 @@ public class CharacterController2D : MonoBehaviour
         {
             Jump();
             _canDoubleJump = false;
-        }   
+        }
     }
 
     private void FixedUpdate()
@@ -84,6 +82,11 @@ public class CharacterController2D : MonoBehaviour
 
         if (hInput > 0 && !lookingRight || hInput < 0 && lookingRight)
             Flip();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.IsEnemyVisible = true;
     }
 
     void Flip()

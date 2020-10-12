@@ -14,6 +14,15 @@ public class AimAssist : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.25f;
     private float _nextTimeToFire = 0.0f;
+    [SerializeField]
+    AudioClip shoot;
+    [SerializeField]
+    AudioSource shootAudio;
+
+    private void Start()
+    {
+        shootAudio.clip = shoot;
+    }
 
     private void Update()
     {
@@ -39,6 +48,7 @@ public class AimAssist : MonoBehaviour
 
                 GameObject bullet = Instantiate(_bulletPrefab, _bulletSpwan.transform.position, Quaternion.Euler(new Vector3(0.0f, 0.0f, rotZ)));
                 bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * _bulletSpeed * Time.unscaledDeltaTime;
+                shootAudio.Play();
             }
         }
     }

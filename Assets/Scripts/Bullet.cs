@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour
     GameObject parentObject;
     [SerializeField]
     ParticleSystem bloodScatter;
+    [SerializeField]
+    CharacterController2D player;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class Bullet : MonoBehaviour
             ParticleSystem blood = Instantiate(bloodScatter, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             blood.Play();
+            Destroy(blood, 5.0f);
         }
 
         if (collision.transform.CompareTag("Player"))
@@ -34,6 +37,8 @@ public class Bullet : MonoBehaviour
             ParticleSystem blood = Instantiate(bloodScatter, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             blood.Play();
+            Destroy(blood, 5.0f);
+            GameManager.Instance.IsPlayerDead = true;
         }
     }
 }

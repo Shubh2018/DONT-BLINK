@@ -20,6 +20,13 @@ public class GameManager : MonoBehaviour
     bool StartTimer = true;
     [SerializeField]
     bool isEnemyVisible = false;
+    [SerializeField]
+    GameObject[] _enemyCount;
+    [SerializeField]
+    bool hasWon = false;
+    int noOfEnemy;
+    bool isPlayerDead = false;
+
     public bool IsEnemyVisible
     {
         get
@@ -33,20 +40,59 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool HasWon
+    {
+        get
+        {
+            return hasWon;
+        }
+    }
+
+    public int NoOfEnemy
+    {
+        get
+        {
+            return noOfEnemy;
+        }
+
+        set
+        {
+            noOfEnemy = value;
+        }
+    }
+
+    public bool IsPlayerDead
+    {
+        get
+        {
+            return isPlayerDead;
+        }
+
+        set
+        {
+            isPlayerDead = value;
+        }
+    }
+
     void Awake()
     {
         _instance = this;
+        noOfEnemy = 0;
     }
 
     void Start()
     {
         Camera.main.backgroundColor = new Color(Random.value, Random.value, Random.value);
+        hasWon = false;
     }
 
     void Update()
     {
         if(StartTimer)
             Timer();
+
+        if (noOfEnemy == _enemyCount.Length)
+            hasWon = true;
     }
 
     void Timer()
@@ -59,6 +105,7 @@ public class GameManager : MonoBehaviour
             timer = 2.5f;
             StartTimer = !StartTimer;
             isEnemyVisible = !isEnemyVisible;
+            UIManager.UIInstance.EnableText();
         }
     }
 }

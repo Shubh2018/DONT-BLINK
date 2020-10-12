@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     Transform bulletSpawn;
     [SerializeField]
     float distance = 10.0f;  
-
     float _nextTimeToShoot = 0.0f;
     [SerializeField]
     float fireRate = 0.1f;
@@ -59,5 +58,10 @@ public class Enemy : MonoBehaviour
             GameObject bullet = Instantiate(bulletprefab, bulletSpawn.position, Quaternion.Euler(new Vector3(0.0f, 0.0f, rotZ)));
             bullet.GetComponent<Rigidbody2D>().velocity = -dirToShoot.normalized * _bulletSpeed * Time.deltaTime;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.NoOfEnemy += 1;
     }
 }
